@@ -1,0 +1,167 @@
+title = "Tour Details"
+url = "/tour/:slug"
+layout = "default"
+
+[TourDetails]
+==
+<div class="tour-details-page container">
+    <!-- Header Row -->
+    <div class="tour-header-row">
+        <div>
+            <h1 class="tour-header-title">{{ tour.tour_name }}</h1>
+            <div class="tour-header-location">
+                <span>&#x1F4CD;</span> {{ tour.location ?? '' }}
+            </div>
+        </div>
+        <div class="tour-header-actions">
+            <a href="/tours" class="btn btn-view-details">Back to Tours</a>
+            <a href="{{ 'booking'|page({ tour: tour.slug }) }}" class="btn btn-tour-main">Book This Tour</a>
+        </div>
+    </div>
+
+    <!-- Main Content Row -->
+    <div class="tour-main-row">
+        <!-- Left: Large Image -->
+        <div class="tour-main-left">
+            {% if tour.image %}
+                <img src="{{ tour.image|media }}" alt="{{ tour.name }}" style="width:100%;height:100%;border-radius:12px;">
+            {% endif %}
+        </div>
+        <!-- Right: Three Stacked Placeholders -->
+        <div class="tour-main-right">
+            <div class="tour-main-right-placeholder"></div>
+            <div class="tour-main-right-placeholder"></div>
+            <div class="tour-main-right-placeholder"></div>
+        </div>
+    </div>
+
+    <div class="tour-content-row main-content">
+        <!-- Left: Large Placeholder -->
+        <div class="tour-content-left">
+            <!-- Tabs -->
+            <div style="margin: 32px 0 18px 0;">
+                <div id="tour-tabs">
+                    <button class="btn-view-details tour-tab-btn active" data-tab="overview">Overview</button>
+                    <button class="btn-view-details tour-tab-btn" data-tab="itinerary">Itinerary</button>
+                    <button class="btn-view-details tour-tab-btn" data-tab="inclusion">Tour Highlights</button>
+                    <button class="btn-view-details tour-tab-btn" data-tab="activities">Route</button>
+                    <button class="btn-view-details tour-tab-btn" data-tab="why-this-tour">Why this tour</button>
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="tour-tab-content">
+                <div class="tour-tab-panel active" data-tab="overview">
+                    <div class="tour-tab-panel-title">Tour Overview</div>
+                    <div class="tour-tab-panel-content">{{ tour.overview }}</div>
+                </div>
+                <div class="tour-tab-panel" data-tab="itinerary">
+                    <div class="tour-tab-panel-title">Itinerary</div>
+                    <div class="tour-tab-panel-content">{{ tour.itinerary }}</div>
+                </div>
+                <div class="tour-tab-panel" data-tab="inclusion">
+                    <div class="tour-tab-panel-title">Tour Highlights</div>
+                    <div class="tour-tab-panel-content">{{ tour.tourhighlights }}</div>
+                </div>
+                <div class="tour-tab-panel" data-tab="activities">
+                    <div class="tour-tab-panel-title">Route</div>
+                    <div class="tour-tab-panel-content">{{ tour.route }}</div>
+                </div>
+                <div class="tour-tab-panel" data-tab="why-this-tour">
+                    <div class="tour-tab-panel-title">Why this tour</div>
+                    <div class="tour-tab-panel-content">{{ tour.whythistour }}</div>
+                </div>
+            </div>
+            <!-- Key Information Bar -->
+            <div class="tour-key-info-bar">
+                <div class="tour-key-info-list">
+                    <div class="tour-key-info-item">
+                        <div class="tour-key-info-label">Duration</div>
+                        <div class="tour-key-info-value">{{ tour.duration }}</div>
+                    </div>
+                    <div class="tour-key-info-item">
+                        <div class="tour-key-info-label">Group Size</div>
+                        <div class="tour-key-info-value">{{ tour.groupsize }}</div>
+                    </div>
+                    <div class="tour-key-info-item">
+                        <div class="tour-key-info-label">Minimum Age</div>
+                        <div class="tour-key-info-value">{{ tour.minimumage }}</div>
+                    </div>
+                    <div class="tour-key-info-item">
+                        <div class="tour-key-info-label">Difficulty</div>
+                        <div class="tour-key-info-value">{{ tour.difficulty }}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Right: Book Now -->
+        <div class="tour-booking-col">
+            <div class="booking-card">
+                <div class="booking-card-title">Book This Tour</div>
+                <div class="booking-card-sub">Secure your spot today</div>
+                <div class="booking-card-price-row">
+                    <span class="booking-card-price-label">Price per person</span>
+                    <span class="booking-card-price-value">${{ tour.price }} USD</span>
+                </div>
+                <div class="booking-card-divider"></div>
+                <ul class="booking-card-list">
+                    {% if tour.duration %}<li><span style='font-size:1.1em;'>⏱️</span> {{ tour.duration }}</li>{% endif %}
+                    <li><span style='font-size:1.1em;'>📅</span> Available : All year round</li>
+                    {% if tour.groupsize %}<li><span style='font-size:1.1em;'>👥</span> Max group size: {{ tour.groupsize }}</li>{% endif %}
+                </ul>
+                <a href="{{ 'booking'|page({ tour: tour.slug }) }}" class="btn btn-tour-main btn-block">Book Now</a>
+                <div class="booking-card-note">No payment required now. Reserve your spot and pay later.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- You May Also Like -->
+    <div class="tour-you-may-also-like you-may-also-like">
+        <div class="tour-you-may-also-like-title">You May Also Like</div>
+        <div class="tours-grid">
+            {# You can add related tours here dynamically if desired #}
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var tabButtons = document.querySelectorAll('.tour-tab-btn');
+        var tabPanels = document.querySelectorAll('.tour-tab-panel');
+        tabButtons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var tab = btn.getAttribute('data-tab');
+                // Remove active from all
+                tabButtons.forEach(function(b) { b.classList.remove('active'); });
+                tabPanels.forEach(function(panel) { panel.classList.remove('active'); });
+                // Activate current
+                btn.classList.add('active');
+                document.querySelector('.tour-tab-panel[data-tab="' + tab + '"]').classList.add('active');
+            });
+        });
+
+        // Sticky booking card functionality
+        const bookingCard = document.querySelector('.booking-card');
+        const mainContent = document.querySelector('.main-content');
+        const footer = document.querySelector('.you-may-also-like');
+
+        function updateStickyPosition() {
+            const mainContentRect = mainContent.getBoundingClientRect();
+            const footerRect = footer.getBoundingClientRect();
+            const cardRect = bookingCard.getBoundingClientRect();
+
+            if (mainContentRect.top <= 36 && footerRect.top > cardRect.height + 36) {
+                bookingCard.style.position = 'fixed';
+                bookingCard.style.top = '36px';
+                bookingCard.style.width = cardRect.width + 'px';
+            } else {
+                bookingCard.style.position = 'static';
+                bookingCard.style.width = '100%';
+            }
+        }
+
+        window.addEventListener('scroll', updateStickyPosition);
+        window.addEventListener('resize', updateStickyPosition);
+    });
+</script>

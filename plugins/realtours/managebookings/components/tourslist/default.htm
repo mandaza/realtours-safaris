@@ -1,0 +1,223 @@
+<div class="tours-list">
+    {% if error %}
+        <div class="alert alert-danger">
+            Error loading tours: {{ error }}
+        </div>
+    {% endif %}
+
+
+
+    {% if tours %}
+        <div class="tours-grid">
+            {% for tour in tours %}
+                <div class="tour-card">
+                    {% if tour.image %}
+                        <div class="tour-image">
+                            <img src="{{ tour.image|media }}" alt="{{ tour.tour_name }}">
+                        </div>
+                    {% else %}
+                        <div class="tour-image"></div>
+                    {% endif %}
+                    <div class="tour-info">
+                        <h2 class="tour-title">{{ tour.tour_name }}</h2>
+                        {% if tour.overview %}
+                            <p class="tour-desc">{{ tour.overview|raw|slice(0, 150) }}...</p>
+                        {% endif %}
+                        <ul class="tour-details">
+                            {% if tour.duration %}
+                                <li><span class="tour-icon">⏱️</span> {{ tour.duration }}</li>
+                            {% endif %}
+                            {% if tour.location %}
+                                <li><span class="tour-icon">📍</span> {{ tour.location }}</li>
+                            {% endif %}
+                            {% if tour.availability %}
+                                <li><span class="tour-icon">📅</span> {{ tour.availability }}</li>
+                            {% endif %}
+                            {% if tour.price %}
+                                <li><span class="tour-icon">💲</span> From ${{ tour.price }} pp</li>
+                            {% endif %}
+                        </ul>
+                        <div class="tour-actions">
+                            <a href="{{ 'tour'|page({ slug: tour.slug }) }}" class="btn btn-view-details">View Details</a>
+                            <a href="{{ 'booking'|page({ slug: tour.slug }) }}" class="btn btn-tour-card">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if tours.lastPage > 1 %}
+            <div class="pagination-container">
+                <ul class="pagination">
+                    {% if tours.currentPage > 1 %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ this.page.baseFileName|page({ page: tours.currentPage-1 }) }}">&larr; Previous</a>
+                        </li>
+                    {% endif %}
+
+                    {% for page in 1..tours.lastPage %}
+                        <li class="page-item {{ tours.currentPage == page ? 'active' : null }}">
+                            <a class="page-link" href="{{ this.page.baseFileName|page({ page: page }) }}">{{ page }}</a>
+                        </li>
+                    {% endfor %}
+
+                    {% if tours.currentPage < tours.lastPage %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ this.page.baseFileName|page({ page: tours.currentPage+1 }) }}">Next &rarr;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="alert alert-info">
+            No tours found. Please add some tours in the backend.
+        </div>
+    {% endif %}
+</div>
+
+<style>
+.tour-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1.5px solid #e2e2e2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tour-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+}
+
+.tour-image {
+    height: 200px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.tour-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tour-info {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.tour-title {
+    font-family: 'Abel', Arial, sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.tour-desc {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    flex-grow: 1;
+}
+
+.tour-details {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.tour-details li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.tour-icon {
+    font-size: 1.1em;
+}
+
+.tour-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.btn-view-details,
+.btn-tour-card {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    text-align: center;
+    flex: 1;
+}
+
+.btn-view-details {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.btn-tour-card {
+    background: #bfa046;
+    color: white;
+}
+
+.btn-view-details:hover {
+    background: #e8e8e8;
+}
+
+.btn-tour-card:hover {
+    background: #a88a3d;
+}
+
+.pagination-container {
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+    grid-column: 1 / -1;
+}
+
+.pagination {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page-item {
+    display: inline-block;
+}
+
+.page-link {
+    display: block;
+    padding: 8px 16px;
+    border: 1.5px solid #e2e2e2;
+    border-radius: 6px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.page-item.active .page-link {
+    background: #bfa046;
+    border-color: #bfa046;
+    color: white;
+}
+
+.page-link:hover:not(.active) {
+    background: #f5f5f5;
+}
+</style>

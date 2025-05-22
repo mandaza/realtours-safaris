@@ -1,0 +1,88 @@
+fields:
+    tour_name:
+        label: 'Tour Name'
+        span: left
+        required: 1
+        type: text
+    slug:
+        label: 'URL Slug'
+        type: text
+        cssClass: hidden
+        span: right
+        comment: 'This will be automatically generated from the tour name'
+    price:
+        label: Price
+        span: right
+        min: 0
+        step: '1'
+        type: number
+    duration:
+        label: Duration
+        span: left
+        type: text
+        comment: 'e.g., "3 days", "1 week"'
+    location:
+        label: Location
+        span: right
+        type: text
+        comment: 'e.g., "Victoria Falls"'
+    groupsize:
+        label: 'Group Size'
+        span: right
+        type: text
+        comment: 'e.g., "2-12 people"'
+    minimumage:
+        label: 'Minimum Age'
+        span: left
+        type: text
+        comment: 'e.g., "12 years"'
+    difficulty:
+        label: Difficulty
+        span: auto
+        type: dropdown
+        options:
+            easy: Easy
+            moderate: Moderate
+            challenging: Challenging
+            difficult: Difficult
+    image:
+        label: 'Main Image'
+        span: left
+        type: mediafinder
+        mode: image
+        imageWidth: 300
+        imageHeight: 200
+    thumbnail1:
+        label: 'Thumbnail Image 1'
+        span: right
+        type: mediafinder
+        mode: image
+        imageWidth: 300
+        imageHeight: 200
+    thumbnail2:
+        label: 'Thumbnail Image 2'
+        span: auto
+        type: mediafinder
+        mode: image
+        imageWidth: 300
+        imageHeight: 200
+    overview:
+        label: Overview
+        span: full
+        type: richeditor
+        size: large
+    route:
+        label: Route
+        span: full
+        type: richeditor
+        size: large
+    whythistour:
+        label: 'Why This Tour'
+        span: full
+        type: richeditor
+        size: large
+    highlights:
+        label: 'Tour Highlights'
+        span: full
+        size: large
+        type: richeditor

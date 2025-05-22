@@ -1,0 +1,39 @@
+name: 'Realtours'
+description: 'Real Tours Safaris Theme'
+
+# Theme settings
+settings:
+    site_name:
+        label: 'Site Name'
+        type: text
+        default: 'Real Tours Safaris'
+
+    contact_email:
+        label: 'Contact Email'
+        type: text
+        default: 'info@realtoursafricas.com'
+
+    contact_phone:
+        label: 'Contact Phone'
+        type: text
+        default: '+255 123 456 789'
+
+    contact_address:
+        label: 'Contact Address'
+        type: text
+        default: 'Arusha, Tanzania'
+
+    facebook_url:
+        label: 'Facebook URL'
+        type: text
+        default: 'https://facebook.com/realtoursafricas'
+
+    twitter_url:
+        label: 'Twitter URL'
+        type: text
+        default: 'https://twitter.com/realtoursafricas'
+
+    instagram_url:
+        label: 'Instagram URL'
+        type: text
+        default: 'https://instagram.com/realtoursafricas'

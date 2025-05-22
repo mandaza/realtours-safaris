@@ -1,0 +1,38 @@
+title = "Accomodations"
+url = "/accommodation"
+layout = "default"
+is_hidden = 0
+
+==
+<div class="container accommodation-page">
+    <div class="accommodation-header">
+        <h1>Accomodations</h1>
+        <p class="accommodation-desc">Experience comfort and luxury in the heart of Zimbabwe's wilderness. We partner with the finest lodges and hotels to ensure your safari experience is complete.</p>
+    </div>
+    <div class="accommodation-grid">
+        {% for i in 1..4 %}
+        <div class="accommodation-card">
+            <div class="accommodation-image"></div>
+            <div class="accommodation-info">
+                <h2 class="accommodation-title">Victoria Falls Hotel</h2>
+                <p class="accommodation-short-desc">Luxury colonial-style hotel overlooking the Victoria Falls bridge and gorge</p>
+                <div class="accommodation-tags">
+                    <span class="accommodation-tag">Swimming Pool</span>
+                    <span class="accommodation-tag">Fine Dining</span>
+                    <span class="accommodation-tag">Spa</span>
+                    <span class="accommodation-tag">Historic Property</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="accommodation-custom-box">
+        <h2>Custom Accommodation Arrangements</h2>
+        <p>Looking for something specific or traveling with a large group? Our team can arrange custom accommodation solutions to meet your exact requirements.</p>
+        <p>Contact us to discuss your accommodation needs and we'll create a tailor-made solution for your safari adventure</p>
+        <div class="accommodation-contact-row">
+            <span class="accommodation-contact"><span class="accommodation-contact-icon">📞</span> <a href="tel:+26377123456">+263 77 123 456</a></span>
+            <span class="accommodation-contact"><span class="accommodation-contact-icon">✉️</span> <a href="mailto:info@realtourssafaris.org">info@realtourssafaris.org</a></span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+title = "About Us"
+url = "/about"
+layout = "default"
+
+==
+<div class="container about-page">
+    <div class="about-header">
+        <h1>About Real Tours Safaris</h1>
+        <div class="about-subtitle">Creating unforgettable African safari experiences since 2008</div>
+    </div>
+    <div class="about-story-row">
+        <div class="about-story-text">
+            <h2>Our Story</h2>
+            <p>Real Tours Safaris was founded in 2008 by a team of passionate Zimbabwean guides who wanted to share the natural beauty and wildlife of their homeland with the world. What began as a small operation with just two vehicles and three guides has grown into one of Zimbabwe's most respected safari companies.</p>
+            <p>Our founder, Emmanuel Moyo, believed that safari tours should not only showcase Africa's incredible wildlife but should also provide authentic cultural experiences and support local communities. This vision continues to guide everything we do.</p>
+            <p>Today, we remain a proudly Zimbabwean-owned company, employing local guides and staff who have unparalleled knowledge of our country's wildlife, history, and culture.</p>
+        </div>
+        <div class="about-story-img about-img-placeholder"></div>
+    </div>
+    <div class="about-mission-box">
+        <h2 class="about-mission-title">Our Mission & Values</h2>
+        <div class="about-mission-row">
+            <div class="about-mission-col">
+                <div class="about-mission-label">Community Support</div>
+                <div class="about-mission-desc">We invest in local communities through employment opportunities, education initiatives, and sourcing supplies locally.</div>
+            </div>
+            <div class="about-mission-col">
+                <div class="about-mission-label">Sustainable Tourism</div>
+                <div class="about-mission-desc">We practice environmentally responsible tourism and actively participate in wildlife conservation efforts.</div>
+            </div>
+            <div class="about-mission-col">
+                <div class="about-mission-label">Authentic Experienced</div>
+                <div class="about-mission-desc">We provide genuine, immersive experiences that connect visitors with the real Zimbabwe.</div>
+            </div>
+        </div>
+    </div>
+    <div class="about-conservation-row">
+        <div class="about-conservation-img about-img-placeholder"></div>
+        <div class="about-conservation-text">
+            <h2>Our Conservation Efforts</h2>
+            <p>At Real Tours Safaris, conservation is at the heart of everything we do. We recognize that the incredible wildlife and habitats we showcase are precious resources that need protection.</p>
+            <p>We contribute a portion of every booking to local conservation projects focused on protecting Zimbabwe's wildlife and natural habitats. Our current initiatives include anti-poaching efforts in Hwange National Park and community education programs about wildlife conservation.</p>
+            <p>Our guides are also trained to educate visitors about conservation challenges and successes in Zimbabwe, helping to create global ambassadors for African wildlife conservation.</p>
+        </div>
+    </div>
+    <div class="about-team-section">
+        <h2 class="about-team-title">Meet Our Expert Team</h2>
+        <div class="about-team-desc">Our passionate guides and staff are the heart of Real Tours Safaris. With deep local knowledge and expertise, they'll make your Zimbabwe adventure truly unforgettable.</div>
+        <div class="about-team-grid">
+            {% for i in 1..4 %}
+            <div class="about-team-card">
+                <div class="about-team-img"></div>
+                <div class="about-team-info">
+                    <div class="about-team-location">&#9679; Victoria Falls</div>
+                    <div class="about-team-name">Innocent Goto</div>
+                    <div class="about-team-bio">With 12 years as a professional guide in Zimbabwe's national parks, Innocent brings deep expertise in wildlife tracking, conservation, and immersive guest experiences.</div>
+                    <div class="about-team-expertise-row">
+                        <span class="about-team-expertise">Wildlife Tracking</span>
+                        <span class="about-team-expertise">Bird Identification</span>
+                        <span class="about-team-expertise">Conservation</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="about-faq-box">
+        <h2 class="about-faq-title">Frequently Asked Questions</h2>
+        <div class="about-faq-list">
+            <div class="about-faq-item">
+                <button class="about-faq-question" aria-expanded="false">How long has Real Tours Safaris been operation?</button>
+                <div class="about-faq-answer">Real Tours Safaris has been operating since 2008, providing unforgettable safari experiences in Zimbabwe.</div>
+            </div>
+            <div class="about-faq-item">
+                <button class="about-faq-question" aria-expanded="false">Are your tours environmentally friendly?</button>
+                <div class="about-faq-answer">Yes, we practice responsible tourism and support local conservation efforts to minimize our environmental impact.</div>
+            </div>
+            <div class="about-faq-item">
+                <button class="about-faq-question" aria-expanded="false">What sets your safari tours apart from others?</button>
+                <div class="about-faq-answer">Our tours are led by local guides, focus on authentic experiences, and support local communities and conservation.</div>
+            </div>
+            <div class="about-faq-item">
+                <button class="about-faq-question" aria-expanded="false">Do you offer private tours?</button>
+                <div class="about-faq-answer">Yes, we offer private and custom tours tailored to your interests and group size.</div>
+            </div>
+            <div class="about-faq-item">
+                <button class="about-faq-question" aria-expanded="false">How do you ensure the safety of your guests?</button>
+                <div class="about-faq-answer">Safety is our top priority. Our guides are highly trained, and we follow strict safety protocols on all tours.</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.about-faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const expanded = btn.getAttribute('aria-expanded') === 'true';
+            document.querySelectorAll('.about-faq-question').forEach(b => b.setAttribute('aria-expanded', 'false'));
+            document.querySelectorAll('.about-faq-answer').forEach(a => a.style.display = 'none');
+            if (!expanded) {
+                btn.setAttribute('aria-expanded', 'true');
+                btn.nextElementSibling.style.display = 'block';
+            }
+        });
+    });
+});
+</script>

@@ -1,0 +1,11 @@
+v1.0.1:
+    - 'Initialize plugin'
+v1.0.2:
+    - 'Created table realtours_managebookings_customers'
+    - builder_table_create_realtours_managebookings_customers.php
+v1.0.3:
+    - 'Created table realtours_managebookings_tours'
+    - builder_table_create_realtours_managebookings_tours.php
+v1.0.4:
+    - 'Created table realtours_managebookings_booking'
+    - builder_table_create_realtours_managebookings_booking.php

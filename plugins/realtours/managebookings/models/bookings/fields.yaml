@@ -1,0 +1,41 @@
+fields:
+    tour_id:
+        label: 'Tour id'
+        span: auto
+        type: number
+    customer_id:
+        label: 'Customer id'
+        span: auto
+        type: number
+    booking_date:
+        label: 'Booking date'
+        span: auto
+        type: datepicker
+    number_of_people:
+        label: 'Number of people'
+        span: auto
+        type: number
+    special_requirements:
+        label: 'Special requirements'
+        span: auto
+        type: textarea
+    status:
+        label: Status
+        span: auto
+        type: dropdown
+        options:
+            pending: Pending
+            approved: Approved
+            rejected: Rejected
+    payment_status:
+        label: 'Payment status'
+        span: auto
+        type: dropdown
+        options:
+            pending: Pending
+            paid: Paid
+            failed: Failed
+    total_amount:
+        label: 'Total amount'
+        span: auto
+        type: number

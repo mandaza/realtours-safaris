@@ -1,0 +1,10 @@
+name: Customers
+form: $/realtours/managebookings/models/customers/fields.yaml
+modelClass: RealTours\Managebookings\Models\Customers
+defaultRedirect: realtours/managebookings/customers
+create:
+    redirect: 'realtours/managebookings/customers/update/:id'
+    redirectClose: realtours/managebookings/customers
+update:
+    redirect: realtours/managebookings/customers
+    redirectClose: realtours/managebookings/customers

@@ -1,0 +1,40 @@
+<div class="booking-success">
+    <div class="alert alert-success">
+        <h4>Thank You!</h4>
+        <p>Your booking request has been submitted successfully. We will contact you shortly to confirm your booking.</p>
+        <p>Booking Reference: #{{ booking.id }}</p>
+    </div>
+    <a href="/tours" class="btn btn-primary">Back to Tours</a>
+</div>
+
+<style>
+.booking-success {
+    text-align: center;
+    padding: 2rem;
+}
+
+.booking-success h4 {
+    margin-bottom: 1rem;
+    color: #155724;
+}
+
+.booking-success p {
+    margin-bottom: 0.5rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 0.25rem;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+</style>

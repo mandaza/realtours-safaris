@@ -1,0 +1,12 @@
+name: Bookings
+form: $/realtours/managebookings/models/bookings/fields.yaml
+modelClass: RealTours\Managebookings\Models\Bookings
+defaultRedirect: realtours/managebookings/bookings
+create:
+    redirect: 'realtours/managebookings/bookings/update/:id'
+    redirectClose: realtours/managebookings/bookings
+update:
+    redirect: realtours/managebookings/bookings
+    redirectClose: realtours/managebookings/bookings
+
+

@@ -1,0 +1,52 @@
+columns:
+    id:
+        label: id
+        type: number
+        invisible: true
+    tour:
+        label: 'Tour Name'
+        relation: tour
+        select: tour_name
+        searchable: true
+    customer:
+        label: 'Customer Name'
+        relation: customer
+        valueFrom: full_name
+        searchable: false
+    booking_date:
+        label: 'Booking Date'
+        type: text
+        searchable: true
+        invisible: false
+        sortable: true
+    number_of_people:
+        label: 'Number of People'
+        type: number
+        searchable: true
+        sortable: true
+    special_requirements:
+        label: 'Special Requirements'
+        type: text
+        searchable: true
+        sortable: true
+    status:
+        label: 'Status'
+        type: text
+        searchable: true
+        sortable: true
+    payment_status:
+        label: 'Payment Status'
+        type: text
+        searchable: true
+        sortable: true
+    total_amount:
+        label: 'Total Amount'
+        type: number
+        searchable: true
+        sortable: true
+    created_at:
+        label: 'Submitted Date'
+        type: datetime
+        searchable: true
+        sortable: true
+

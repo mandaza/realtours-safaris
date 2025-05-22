@@ -1,0 +1,17 @@
+fields:
+    first_name:
+        label: 'First name'
+        span: auto
+        type: text
+    last_name:
+        label: 'Last name'
+        span: auto
+        type: text
+    email:
+        label: Email
+        span: auto
+        type: text
+    phone:
+        label: Phone
+        span: auto
+        type: text

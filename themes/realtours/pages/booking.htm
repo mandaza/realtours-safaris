@@ -1,0 +1,41 @@
+title = "Booking Request"
+url = "/booking/:slug"
+layout = "default"
+
+[TourDetails]
+[BookingForm]
+==
+<div class="booking-request-page container">
+    <div class="booking-header">
+        <h1>Book Your Safari Adventure</h1>
+        <div class="booking-header-desc">Fill out the form below to request a booking for {{ tour.tour_name }}</div>
+    </div>
+    <div class="booking-request-flex">
+        <!-- Left: Booking Form -->
+        <div class="booking-form-card">
+            {% component 'BookingForm' %}
+        </div>
+        <!-- Right: Tour Summary -->
+        <div class="booking-summary-card">
+            <div class="summary-title">Tour Summary</div>
+            <div class="summary-img"></div>
+            <div class="summary-tour-title">{{ tour.tour_name }}</div>
+            <div class="summary-tour-desc">Discover the amazing The Smoke that Thunder!</div>
+            <div class="summary-details">
+                <div><span>Duration:</span>{{ tour.duration }}</div>
+                <div><span>Location:</span> {{ tour.location }} </div>
+                <div><span>Group Size:</span> Up to {{ tour.groupsize }} people</div>
+                <div><span>Difficulty:</span> {{ tour.difficulty }}</div>
+            </div>
+            <div class="summary-price-row">
+                <span class="summary-price-label">Price per person</span>
+                <span class="summary-price-value">${{ tour.price }}</span>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-note">
+                Note: This is a booking request only. Our team will contact you to confirm availability and process payment. No payment is required at this stage.
+            </div>
+            <a href="/tour" class="btn btn-view-details btn-block">Back to Tour Details</a>
+        </div>
+    </div>
+</div>

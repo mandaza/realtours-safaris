@@ -1,0 +1,43 @@
+columns:
+    id:
+        label: id
+        type: number
+        invisible: true
+    tour_name:
+        label: 'Tour Name'
+        type: text
+        searchable: true
+        sortable: true
+    price:
+        label: 'Price'
+        type: text
+        searchable: true
+        invisible: false
+        sortable: true
+    duration:
+        label: 'Duration'
+        type: text
+        searchable: true
+        sortable: true
+    location:
+        label: 'Location'
+        type: text
+        searchable: true
+        sortable: true
+    groupsize:
+        label: 'Group Size'
+        type: text
+        searchable: true
+        sortable: true
+    minimumage:
+        label: 'Minimum Age'
+        type: text
+        searchable: true
+        sortable: true
+    difficulty:
+        label: 'Difficulty'
+        type: text
+        searchable: true
+        sortable: true
+
+

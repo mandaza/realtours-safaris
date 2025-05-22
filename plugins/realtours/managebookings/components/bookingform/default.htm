@@ -1,0 +1,49 @@
+<form id="bookingForm" data-request="onSave" data-request-validate data-request-success="window.location.href = '{{ 'booking-confirmation'|page({ tour: tour.slug }) }}';" autocomplete="off" novalidate>
+    <div class="form-row">
+        <div>
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name" placeholder="John" required>
+            <div class="error-message" data-validate-for="first_name"></div>
+        </div>
+        <div>
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" name="last_name" placeholder="Doe" required>
+            <div class="error-message" data-validate-for="last_name"></div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
+            <div class="error-message" data-validate-for="email"></div>
+        </div>
+        <div>
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+263 77 210 3456" required pattern="[0-9\+\- ]{10,}">
+            <div class="error-message" data-validate-for="phone"></div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div>
+            <label for="booking_date">Tour Date</label>
+            <input type="date" id="booking_date" name="booking_date" required min="{{ 'now'|date('Y-m-d') }}">
+            <div class="error-message" data-validate-for="booking_date"></div>
+        </div>
+        <div>
+            <label for="number_of_people">Number of Participants</label>
+            <select id="number_of_people" name="number_of_people" required>
+                <option value="">Select number of participants</option>
+                {% for i in 1..tour.groupsize %}
+                    <option value="{{ i }}">{{ i }} {{ i == 1 ? 'Person' : 'People' }}</option>
+                {% endfor %}
+            </select>
+            <div class="form-note">Maximum group size: {{ tour.groupsize }}</div>
+            <div class="error-message" data-validate-for="number_of_people"></div>
+        </div>
+    </div>
+    <div class="form-section">
+        <label for="special_requirements">Special Requests (Optional)</label>
+        <textarea id="special_requirements" name="special_requirements" placeholder="Let us know if you have any dietary requirements, accessibility needs, or other special requests."></textarea>
+    </div>
+    <button type="submit" class="btn btn-tour-main btn-block">Submit Booking Request</button>
+</form>

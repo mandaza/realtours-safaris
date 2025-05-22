@@ -1,0 +1,10 @@
+name: Tours
+form: $/realtours/managebookings/models/tours/fields.yaml
+modelClass: RealTours\Managebookings\Models\Tours
+defaultRedirect: realtours/managebookings/tours
+create:
+    redirect: 'realtours/managebookings/tours/update/:id'
+    redirectClose: realtours/managebookings/tours
+update:
+    redirect: realtours/managebookings/tours
+    redirectClose: realtours/managebookings/tours

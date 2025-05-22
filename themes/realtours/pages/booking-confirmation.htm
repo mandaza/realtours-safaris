@@ -1,0 +1,28 @@
+title = "Booking Confirmation"
+url = "/booking-confirmation/:slug"
+layout = "default"
+
+[TourDetails]
+==
+<div class="booking-confirmation-page container">
+    <div class="booking-confirmation-card">
+        <div class="confirmation-icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="32" fill="#eafbe7"/>
+                <path d="M20 33.5L29 42L44 25" stroke="#2ecc40" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="confirmation-title">Booking Request Received!</div>
+        <div class="confirmation-subtitle">Thank you for booking with Real Tours Safaris</div>
+        <div class="confirmation-message">
+            We have received your booking request for the <b>{{ tour.name }}</b> Our team will review your request and contact you within 24 hours to confirm your booking and provide payment instructions.
+        </div>
+        <div class="confirmation-contact">
+            If you have any questions in the meantime, please contact us at <a href="mailto:info@realtourssafaris.com">info@realtourssafaris.com</a> or call <a href="tel:+263771234567">+263 77 123 4567</a>.
+        </div>
+        <div class="confirmation-actions">
+            <a href="/" class="btn btn-view-details">Return to Homepage</a>
+            <a href="/tours" class="btn btn-tour-main">Browse More Tours</a>
+        </div>
+    </div>
+</div>

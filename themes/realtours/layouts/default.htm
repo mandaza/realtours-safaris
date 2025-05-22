@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ this.page.title }} - {{ this.theme.site_name }}</title>
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="author" content="Real Tours Safaris Zimbabwe">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="{{ 'assets/images/favicon.png'|theme }}">
+        <link href="https://fonts.googleapis.com/css?family=Barlow:400,700,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script:700&display=swap" rel="stylesheet">
+        <link href="{{ 'assets/css/theme.css'|theme }}" rel="stylesheet">
+        {% styles %}
+    </head>
+    <body>
+        <!-- Header -->
+        <header>
+            {% partial 'site/header' %}
+        </header>
+
+        <!-- Content -->
+        <main>
+            {% page %}
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            {% partial 'site/footer' %}
+        </footer>
+
+        <!-- Scripts -->
+        <script src="{{ 'assets/vendor/jquery.js'|theme }}"></script>
+        {% framework extras %}
+        {% scripts %}
+
+        {% if this.page.id == 'home' or this.page.id == 'tour-map' %}
+        <audio id="bg-audio" src="{{ 'assets/audio/savanna.mp3'|theme }}" autoplay loop style="display:none"></audio>
+        <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('bg-audio');
+            if (audio) {
+                audio.volume = 0.5;
+                audio.play().catch(function(){});
+            }
+        });
+        </script>
+        {% endif %}
+    </body>
+</html>

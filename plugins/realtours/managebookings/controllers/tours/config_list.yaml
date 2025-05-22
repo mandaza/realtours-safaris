@@ -1,0 +1,12 @@
+list: $/realtours/managebookings/models/tours/columns.yaml
+modelClass: RealTours\Managebookings\Models\Tours
+title: Tours
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'realtours/managebookings/tours/update/:id'

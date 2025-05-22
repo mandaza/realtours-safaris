@@ -1,0 +1,31 @@
+columns:
+    id:
+        label: id
+        type: number
+        invisible: true
+    first_name:
+        label: 'First Name'
+        type: text
+        searchable: true
+        sortable: true
+    last_name:
+        label: 'Last Name'
+        type: text
+        searchable: true
+        sortable: true
+    email:
+        label: Email
+        type: text
+        searchable: true
+        invisible: false
+        sortable: true
+    phone:
+        label: 'Phone No.'
+        type: text
+        searchable: true
+        invisible: false
+        sortable: true
+    created_at:
+        label: 'Joined Date'
+        type: datetime
+

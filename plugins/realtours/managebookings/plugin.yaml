@@ -1,0 +1,20 @@
+plugin:
+    name: 'realtours.managebookings::lang.plugin.name'
+    description: 'realtours.managebookings::lang.plugin.description'
+    author: RealTours
+    icon: oc-icon-book
+    homepage: ''
+navigation:
+    main-menu-item2:
+        label: Tours
+        url: realtours/managebookings/tours
+        icon: icon-road
+        iconSvg: ''
+    main-menu-item3:
+        label: Customers
+        url: realtours/managebookings/customers
+        icon: icon-user
+    main-menu-item:
+        label: Bookings
+        url: realtours/managebookings/bookings
+        icon: icon-book

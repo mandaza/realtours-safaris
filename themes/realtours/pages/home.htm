@@ -1,0 +1,61 @@
+title = "Home"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+==
+<div class="hero hero-home">
+    <div class="hero-socials">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+            <img src="{{ 'assets/images/icos/facebook.svg'|theme }}" alt="Facebook" width="24" height="24" />
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+            <img src="{{ 'assets/images/icos/instagram.svg'|theme }}" alt="Instagram" width="24" height="24" />
+        </a>
+        <a href="https://x.com" target="_blank" aria-label="X">
+            <img src="{{ 'assets/images/icos/x.svg'|theme }}" alt="X" width="24" height="24" />
+        </a>
+    </div>
+    <div class="hero-whatsapp">
+        <a href="https://api.whatsapp.com/send/?phone=0263775901717&text=Hello&type=phone_number&app_absent=0" target="_blank" aria-label="WhatsApp">
+            <img src="{{ 'assets/images/icos/whatsapp.png'|theme }}" alt="WhatsApp" width="58" height="38" />
+        </a>
+    </div>
+    <video id="hero-video" class="hero-bg-video" autoplay muted playsinline style="object-fit:cover;width:100vw;height:100vh;position:absolute;top:0;left:0;z-index:0;"></video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-text">
+            <span class="hero-sub">Let's explore</span>
+            <h1 class="hero-title">ZIMBABWE</h1>
+            <span class="hero-script">Together</span>
+        </div>
+        <div class="hero-buttons">
+            <a href="/deals" class="btn btn-gold btn-hero">Our Deals</a>
+            <a href="/tour-map" class="btn btn-outline-gold">Try our tour map</a>
+        </div>
+    </div>
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+    var video = document.getElementById('hero-video');
+    // List all your video files here
+    var videos = [
+        "{{ 'assets/footage/tour.mp4'|theme }}",
+        "{{ 'assets/footage/victoria-falls.mp4'|theme }}"
+        // Add more if needed
+    ];
+    var current = 0;
+    video.src = videos[current];
+
+    video.addEventListener('ended', function() {
+        current = (current + 1) % videos.length;
+        video.src = videos[current];
+        video.play();
+    });
+});
+</script>
+
+
+
+
+
