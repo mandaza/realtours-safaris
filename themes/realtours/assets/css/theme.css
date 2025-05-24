@@ -333,12 +333,13 @@ body {
     }
 
 }
+
 @media (max-width: 400px) {
     .hero-content {
         padding: 0 18px;
     }
     .hero-title {
-        font-size: 4rem;
+        font-size: 5rem;
     }
     .hero-script {
         font-size: 2rem;
@@ -354,8 +355,7 @@ body {
         align-items: center;
         margin-top: 1rem;
     }
-    .hero-socials {
-        left: 12px;
+
 }
 
 /* Footer styles */
@@ -572,6 +572,27 @@ body {
     background: #f9f7f2;
 }
 
+@media (max-width: 900px) {
+    .tours-header {
+        padding: 0 12px;
+    }
+    .tours-header h1 {
+        font-size: 2rem;
+    }
+    .tours-desc {
+        margin-bottom: 24px;
+    }
+    .tours-controls {
+        margin-bottom: 24px;
+    }
+    .tours-grid {
+        gap: 16px;
+    }
+    .tour-card {
+        min-height: 380px;
+    }
+
+}
 
 /* Page-specific button styles */
 .btn-hero {
@@ -676,8 +697,6 @@ body {
     background: #a88c3d;
     color: #fff;
 }
-
-
 @media (max-width: 900px) {
     .tours-header {
         padding: 0 12px;
@@ -697,7 +716,16 @@ body {
     .tour-card {
         min-height: 380px;
     }
-
+    .btn-view-details {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+        height: 32px;
+    }
+    .btn-tour-main {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+        height: 32px;
+    }
 }
 
 /* --- Booking Request Page Styles (Refined) --- */
@@ -1115,43 +1143,57 @@ body {
         min-width: 0;
         max-width: 100%;
     }
-    .tour-header-row {
+    .tour-tab-btn  {
+        font-size: 0.9rem;
+    }
+    .tour-tabs-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1.2rem;
+      }
+      .tour-tabs-row {
+        display: flex;
         flex-direction: row;
+        gap: 0.5rem;
+        justify-content: center;
+        width: 100%;
+      }
+      .tour-tab-btn {
+        flex: 1 1 0;
+        min-width: 0;
+        font-size: 0.8rem;
+        padding: 0.7rem 0.2rem;
+        border-radius: 6px;
+        white-space: nowrap;
+        margin: 0;
+
+      }
+
+}
+
+@media (max-width: 400px) {
+    .tour-main-row, .tour-content-row {
+        gap: 18px;
+    }
+    .tour-header-row {
+        flex-direction: column;
         gap: 18px;
     }
     .tour-header-title {
         font-size: 2rem;
     }
-    .tour-main-left {
-        height: 300px;
-    }
-    .tour-main-right {
-        flex-direction: row;
-        gap: 18px;
-    }
-    .tour-main-right-placeholder {
-        height: 100px;
-    }
-    .tour-content-left {
-        flex-direction: row;
-        gap: 18px;
-        flex-wrap: wrap;
-    }
-    .tour-tab-btn {
-        font-size: 0.9rem;
-    }
+
     .tour-tab-panel-title {
-        font-size: 1rem;
+        font-size: 2rem;
         margin-bottom: 6px;
     }
     .tour-tab-panel-content {
         font-size: 0.9rem;
     }
-
     .tour-key-info-bar {
         margin-bottom: 24px;
     }
-
 }
 
 /* --- Booking Confirmation Page Styles --- */
@@ -1397,6 +1439,7 @@ body {
         margin-bottom: 24px;
     }
 }
+
 /* About Us Page Styles */
 .about-page {
     padding: 48px 0 32px 0;
@@ -1587,7 +1630,7 @@ body {
         padding: 18px 22px 18px 18px;
     }
     .about-header h1 {
-        font-size: 2.5remrem;
+        font-size: 2rem;
     }
     .about-mission-row {
         flex-direction: column;
@@ -2073,25 +2116,6 @@ body {
         padding: 0;
         height: 40px;
     }
-
-}
-
-@media (max-width: 900px) {
-  .tour-tabs-mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1.2rem;
-  }
-  .tour-tabs-row {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    justify-content: center;
-    width: 100%;
-  }
-
-
 
 }
 

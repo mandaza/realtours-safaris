@@ -47,6 +47,7 @@ class ToursList extends ComponentBase
 
     public function onRun()
     {
+        $this->page['search'] = input('search');
         try {
             // Get database connection details
             $connection = \DB::connection();
@@ -94,43 +95,25 @@ class ToursList extends ComponentBase
 
     protected function loadTours()
     {
-        try {
-            $query = Tours::query();
-
-            // Log the table name
-            Log::info('Attempting to load tours from table: ' . (new Tours)->getTable());
-
-            // Try a raw query first to verify data exists
-            $rawCount = \DB::table('prospermandaza_managetours_tours')->count();
-            Log::info('Raw query count: ' . $rawCount);
-
-            if ($rawCount > 0) {
-                $rawTours = \DB::table('prospermandaza_managetours_tours')->get();
-                Log::info('Raw tour data: ' . json_encode($rawTours));
-            }
-
-            // Apply sorting
-            $sortOrder = $this->property('sortOrder', 'name asc');
-            list($sortField, $sortDirection) = explode(' ', $sortOrder);
-            $query->orderBy($sortField, $sortDirection);
-
-            // Execute the query and log the results
-            $tours = $query->paginate($this->property('toursPerPage'));
-            Log::info('Query executed. Found ' . $tours->count() . ' tours');
-
-            if ($tours->isEmpty()) {
-                Log::info('No tours found in the database through Eloquent');
-            } else {
-                foreach ($tours as $tour) {
-                    Log::info('Tour data: ' . json_encode($tour->toArray()));
-                }
-            }
-
-            return $tours;
-        } catch (\Exception $e) {
-            Log::error('Error in loadTours: ' . $e->getMessage());
-            Log::error('Stack trace: ' . $e->getTraceAsString());
-            throw $e;
+        $query = Tours::query();
+        $search = trim(input('search'));
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('tour_name', 'like', "%$search%")
+                  ->orWhere('location', 'like', "%$search%")
+                  ->orWhere('overview', 'like', "%$search%")
+                  ->orWhere('route', 'like', "%$search%")
+                  ->orWhere('whythistour', 'like', "%$search%")
+                  ->orWhere('highlights', 'like', "%$search%")
+                  ->orWhere('difficulty', 'like', "%$search%")
+                  ->orWhere('groupsize', 'like', "%$search%")
+                  ->orWhere('duration', 'like', "%$search%")
+                  ;
+            });
         }
+        $sortOrder = $this->property('sortOrder', 'name asc');
+        list($sortField, $sortDirection) = explode(' ', $sortOrder);
+        $query->orderBy($sortField, $sortDirection);
+        return $query->paginate($this->property('toursPerPage'));
     }
 }
