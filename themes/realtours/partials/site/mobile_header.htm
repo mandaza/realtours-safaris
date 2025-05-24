@@ -1,0 +1,143 @@
+<!-- Mobile Header & Hamburger Menu -->
+<div class="mobile-header">
+    <button id="menu-toggle" class="hamburger-btn" aria-label="Open menu">
+        <span class="hamburger-icon">&#9776;</span> <span class="menu-text">Menu</span>
+    </button>
+    <a href="{{ 'home'|page }}" class="mobile-logo-link">
+        <img src="{{ 'assets/images/logo.png'|theme }}" class="mobile-logo" alt="Real Tours & Safaris">
+    </a>
+</div>
+
+<!-- Overlay Mobile Menu -->
+<div id="mobile-menu" class="mobile-menu-overlay" tabindex="-1" aria-hidden="true">
+    <button id="menu-close" class="close-btn" aria-label="Close menu">&#10005; Close</button>
+    <nav class="mobile-nav">
+        <a href="{{ 'home'|page }}">Home</a>
+        <a href="{{ 'tours'|page }}">Tours & Activities</a>
+        <a href="{{ 'accommodation'|page }}">Accommodation</a>
+        <a href="{{ 'about'|page }}">About Us</a>
+    </nav>
+</div>
+
+<style>
+/* Mobile Header Styles */
+.mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: #231f20;
+    position: relative;
+    z-index: 1100;
+}
+.hamburger-btn {
+    background: none;
+    border: none;
+    color: #e0c36a;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.hamburger-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+}
+.menu-text {
+    font-size: 1.1rem;
+    font-family: inherit;
+}
+.mobile-logo {
+    height: 38px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+}
+.mobile-logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Overlay Menu Styles */
+.mobile-menu-overlay {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #231f20;
+    color: #fff;
+    z-index: 2000;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    transition: opacity 0.2s;
+}
+.mobile-menu-overlay.active {
+    display: flex;
+}
+.close-btn {
+    background: none;
+    border: none;
+    color: #e0c36a;
+    font-size: 1.7rem;
+    align-self: flex-start;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.mobile-nav a {
+    color: #e0c36a;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #393536;
+    transition: background 0.2s, color 0.2s;
+}
+.mobile-nav a:last-child {
+    border-bottom: none;
+}
+.mobile-nav a:hover {
+    background: #393536;
+    color: #fff;
+}
+@media (min-width: 900px) {
+    .mobile-header, .mobile-menu-overlay { display: none !important; }
+}
+@media (max-width: 899px) {
+    .desktop-header {
+        display: none !important;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var menuToggle = document.getElementById('menu-toggle');
+    var menuClose = document.getElementById('menu-close');
+    var mobileMenu = document.getElementById('mobile-menu');
+    // Open menu
+    menuToggle && menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        mobileMenu.focus();
+        document.body.style.overflow = 'hidden';
+    });
+    // Close menu
+    menuClose && menuClose.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    });
+    // Close on ESC
+    mobileMenu && mobileMenu.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            mobileMenu.classList.remove('active');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+    });
+});
+</script>
