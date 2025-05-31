@@ -1,0 +1,158 @@
+<div class="tour-map-header" style="text-align:center;margin-top:60px;">
+    <h1 style="font-family:'Abel',Arial,sans-serif;font-size:2.6rem;font-weight:400;">Our Tour Map</h1>
+    <div style="font-size:1.15rem;color:#666;margin-top:10px;">Explore our safari destinations and activities throughout Zimbabwe. Click on markers to see tour details</div>
+</div>
+<div class="tour-map-main" style="display:flex;justify-content:center;align-items:flex-start;margin-top:36px;gap:32px;">
+    <!-- Left Panel: Tour List -->
+    <div class="tour-map-list-panel" style="background:#fff;border-radius:14px;box-shadow:0 2px 16px rgba(0,0,0,0.06);border:1.5px solid #e2e2e2;width:290px;min-width:260px;max-height:600px;overflow-y:auto;padding:28px 18px 18px 18px;">
+        <div style="font-family:'Abel',Arial,sans-serif;font-size:1.13rem;font-weight:500;margin-bottom:2px;color:#444;">Tour & Activities Map</div>
+        <div style="font-size:0.97rem;color:#aaa;margin-bottom:12px;">Click on a tour marker to view details and booking options.</div>
+        <div style="border-bottom:1.5px solid #d8d8d8;margin-bottom:12px;"></div>
+        <div id="tour-list">
+            <!-- Tour items will be rendered here by JS -->
+        </div>
+    </div>
+    <!-- Right Panel: Map -->
+    <div class="tour-map-map-panel" style="flex:1;min-width:600px;max-width:950px;height:600px;position:relative;">
+        <div id="tour-map" style="width:100%;height:100%;border-radius:18px;overflow:hidden;"></div>
+        <!-- Popup Card -->
+        <div id="tour-popup" class="tour-map-popup-card" style="display:none;position:absolute;z-index:10;left:50px;top:60px;width:340px;background:#fff;border-radius:12px;box-shadow:0 4px 24px rgba(60,60,60,0.13);padding:22px 18px 18px 18px;border:1.5px solid #e2e2e2;"></div>
+    </div>
+</div>
+
+<!-- Mapbox & Page JS -->
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+<script>
+// Get tours data from the server
+const tours = JSON.parse('{{ tours|json_encode|raw }}');
+console.log('Loaded tours:', tours);
+
+const MAPBOX_TOKEN = 'pk.eyJ1IjoiZnJ1Y3RveCIsImEiOiJja2swNnIydzcwZW1mMm5tZmV4Zm44cjVuIn0.AnaNJVv0-oE25uP2-n82QQ';
+
+function renderTourList(selectedId) {
+    const list = document.getElementById('tour-list');
+    list.innerHTML = '';
+
+    if (!tours || tours.length === 0) {
+        list.innerHTML = '<div style="padding:20px;text-align:center;color:#666;">No tours available</div>';
+        return;
+    }
+
+    tours.forEach(tour => {
+        const div = document.createElement('div');
+        div.className = 'tour-list-item' + (tour.id === selectedId ? ' selected' : '');
+        div.style = `padding:13px 12px 9px 12px;margin-bottom:7px;border-radius:7px;cursor:pointer;transition:background 0.15s;border:1.2px solid ${tour.id === selectedId ? '#bfa046' : 'transparent'};background:${tour.id === selectedId ? '#f9f3df' : 'none'};`;
+        div.innerHTML = `<div style="font-family:'Abel',Arial,sans-serif;font-size:1.08rem;color:#444;">${tour.tour_name || 'Unnamed Tour'}</div><div style="font-size:0.97rem;color:#bfa046;">${tour.location || 'Location not specified'}</div>`;
+        div.onclick = () => selectTour(tour.id, true);
+        list.appendChild(div);
+    });
+}
+
+let map, markers = [], popupTourId = null, mapboxPopups = [];
+
+function renderPopup(tour, marker) {
+    if (!tour) return;
+
+    // Remove any existing popups
+    mapboxPopups.forEach(p => p.remove());
+    mapboxPopups = [];
+
+    // Create a new Mapbox popup
+    const popupContent = `
+        <img src='${tour.image}' alt='${tour.tour_name || 'Tour'}' class='tour-map-popup-img' style='width:100%;height:110px;object-fit:cover;border-radius:10px 10px 0 0;margin-bottom:10px;'>
+        <div class="tour-map-popup-title">${tour.tour_name || 'Unnamed Tour'}</div>
+        <div class="tour-map-popup-location">${tour.location || 'Location not specified'}</div>
+        <div class="tour-map-popup-actions">
+            <a href='/tour?id=${tour.id}' class='btn btn-view-details'>More details</a>
+            <a href='/booking?tour=${tour.id}' class='btn btn-tour-card'>Book Now</a>
+        </div>
+    `;
+
+    const popup = new mapboxgl.Popup({
+        offset: 28,
+        closeButton: true,
+        closeOnClick: false,
+        className: 'tour-map-popup-card'
+    })
+        .setLngLat([parseFloat(tour.longitude) || 0, parseFloat(tour.latitude) || 0])
+        .setHTML(popupContent)
+        .addTo(map);
+    mapboxPopups.push(popup);
+}
+
+function hidePopup() {
+    mapboxPopups.forEach(p => p.remove());
+    mapboxPopups = [];
+    popupTourId = null;
+}
+
+function selectTour(id, fromList) {
+    const tour = tours.find(t => t.id === id);
+    if (!tour) return;
+
+    renderTourList(id);
+    // Find the marker for this tour
+    const marker = markers.find(m => m.tourId === id);
+    renderPopup(tour, marker);
+    popupTourId = id;
+
+    // Center map on marker
+    if (map && tour && fromList) {
+        const lat = parseFloat(tour.latitude) || 0;
+        const lng = parseFloat(tour.longitude) || 0;
+        map.flyTo({center: [lng, lat], zoom: 7.5});
+    }
+
+    // Highlight marker
+    markers.forEach(m => {
+        m.getElement().style.border = (m.tourId === id) ? '2.5px solid #bfa046' : '2.5px solid #fff';
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing map...');
+
+    if (!tours || tours.length === 0) {
+        console.log('No tours available');
+        document.getElementById('tour-list').innerHTML = '<div style="padding:20px;text-align:center;color:#666;">No tours available</div>';
+        return;
+    }
+
+    renderTourList();
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    map = new mapboxgl.Map({
+        container: 'tour-map',
+        style: 'mapbox://styles/mapbox/light-v11',
+        center: [27.8493, -18.6657],
+        zoom: 6.1,
+        attributionControl: false
+    });
+
+    // Add markers
+    markers = tours.map(tour => {
+        const el = document.createElement('div');
+        el.className = 'tour-marker';
+        el.style = 'width:28px;height:28px;background:#fff;border:2.5px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(191,160,70,0.13);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border 0.18s;';
+        el.innerHTML = `<div style='width:16px;height:16px;background:#bfa046;border-radius:50%;'></div>`;
+        el.onclick = (e) => {
+            e.stopPropagation();
+            selectTour(tour.id, false);
+        };
+
+        const lat = parseFloat(tour.latitude) || 0;
+        const lng = parseFloat(tour.longitude) || 0;
+        const marker = new mapboxgl.Marker(el).setLngLat([lng, lat]).addTo(map);
+        marker.tourId = tour.id;
+        return marker;
+    });
+
+    // Hide popup on map click
+    map.on('click', hidePopup);
+
+    // Show popup for selected tour on load if there are tours
+    if (tours.length > 0) {
+        selectTour(tours[0].id, false);
+    }
+});
+</script>

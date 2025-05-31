@@ -3,7 +3,7 @@ url = "/tours"
 layout = "default"
 is_hidden = 0
 
-[ToursList]
+[tourslist]
 toursPerPage = 6
 sortOrder = "name desc"
 ==
@@ -15,26 +15,29 @@ sortOrder = "name desc"
         <div class="tours-controls">
             <div class="tours-search">
                 <form class="tours-search" method="get" style="position: relative;">
-                    <input type="text" name="search" value="{{ search }}" placeholder="Search..." />
+                    <input type="text" name="search" value="{{ search }}" placeholder="Search tours..." />
                     <button type="submit" class="search-icon" aria-label="Search" style="background: none; border: none; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #bbb; font-size: 1.2rem; cursor: pointer;">
                         🔍
                     </button>
                 </form>
             </div>
-            <select class="tours-filter">
-                <option>All Duration</option>
-                <option>1-3 Hrs</option>
-                <option>Half Day</option>
-                <option>Full Day</option>
+            <select class="tours-filter" name="duration">
+                <option value="">All Duration</option>
+                <option value="1-3 Hrs">1-3 Hours</option>
+                <option value="Half Day">Half Day</option>
+                <option value="Full Day">Full Day</option>
+                <option value="Multi Day">Multi Day</option>
             </select>
-            <select class="tours-sort">
-                <option>Featured</option>
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
+            <select class="tours-sort" name="sort">
+                <option value="name asc">Name (A-Z)</option>
+                <option value="name desc">Name (Z-A)</option>
+                <option value="price asc">Price: Low to High</option>
+                <option value="price desc">Price: High to Low</option>
+                <option value="created_at desc">Newest First</option>
             </select>
         </div>
     </div>
     <div class="tours-grid">
-        {% component 'ToursList' %}
+        {% component 'tourslist' %}
     </div>
 </div>

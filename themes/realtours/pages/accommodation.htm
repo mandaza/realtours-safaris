@@ -12,16 +12,55 @@ is_hidden = 0
     <div class="accommodation-grid">
         {% for i in 1..4 %}
         <div class="accommodation-card">
-            <div class="accommodation-image"></div>
+            <div class="accommodation-image">
+                {% if i == 1 %}
+                    <img src="{{ 'assets/images/hotels/the_vic_falls.jpg'|theme }}" alt="Victoria Falls Hotel" style="width:100%;height:100%;object-fit:cover;">
+                {% elseif i == 2 %}
+                    <img src="{{ 'assets/images/hotels/llala.jpg'|theme }}" alt="Ilala Lodge" style="width:100%;height:100%;object-fit:cover;">
+                {% elseif i == 3 %}
+                    <img src="{{ 'assets/images/hotels/shongwe.jpg'|theme }}" alt="Shongwe Hotel" style="width:100%;height:100%;object-fit:cover;">
+                {% else %}
+                    <img src="{{ 'assets/images/hotels/elephant_hills.jpg'|theme }}" alt="Elephant Hills Resort" style="width:100%;height:100%;object-fit:cover;">
+                {% endif %}
+            </div>
             <div class="accommodation-info">
-                <h2 class="accommodation-title">Victoria Falls Hotel</h2>
-                <p class="accommodation-short-desc">Luxury colonial-style hotel overlooking the Victoria Falls bridge and gorge</p>
-                <div class="accommodation-tags">
-                    <span class="accommodation-tag">Swimming Pool</span>
-                    <span class="accommodation-tag">Fine Dining</span>
-                    <span class="accommodation-tag">Spa</span>
-                    <span class="accommodation-tag">Historic Property</span>
-                </div>
+                {% if i == 1 %}
+                    <h2 class="accommodation-title">Victoria Falls Hotel</h2>
+                    <p class="accommodation-short-desc">Luxury colonial-style hotel overlooking the Victoria Falls bridge and gorge</p>
+                    <div class="accommodation-tags">
+                        <span class="accommodation-tag">Swimming Pool</span>
+                        <span class="accommodation-tag">Fine Dining</span>
+                        <span class="accommodation-tag">Spa</span>
+                        <span class="accommodation-tag">Historic Property</span>
+                    </div>
+                {% elseif i == 2 %}
+                    <h2 class="accommodation-title">Ilala Lodge</h2>
+                    <p class="accommodation-short-desc">Elegant boutique hotel with stunning views of the Victoria Falls</p>
+                    <div class="accommodation-tags">
+                        <span class="accommodation-tag">Premium Location</span>
+                        <span class="accommodation-tag">Fine Dining</span>
+                        <span class="accommodation-tag">Garden Views</span>
+                        <span class="accommodation-tag">Spa Services</span>
+                    </div>
+                {% elseif i == 3 %}
+                    <h2 class="accommodation-title">Shongwe Hotel</h2>
+                    <p class="accommodation-short-desc">Comfortable mid-range hotel with easy access to Victoria Falls</p>
+                    <div class="accommodation-tags">
+                        <span class="accommodation-tag">Swimming Pool</span>
+                        <span class="accommodation-tag">Restaurant</span>
+                        <span class="accommodation-tag">Conference Facilities</span>
+                        <span class="accommodation-tag">Family Friendly</span>
+                    </div>
+                {% else %}
+                    <h2 class="accommodation-title">Elephant Hills Resort</h2>
+                    <p class="accommodation-short-desc">Luxury resort with golf course and panoramic views of the Zambezi</p>
+                    <div class="accommodation-tags">
+                        <span class="accommodation-tag">Golf Course</span>
+                        <span class="accommodation-tag">Swimming Pool</span>
+                        <span class="accommodation-tag">Conference Center</span>
+                        <span class="accommodation-tag">Spa & Wellness</span>
+                    </div>
+                {% endif %}
             </div>
         </div>
         {% endfor %}

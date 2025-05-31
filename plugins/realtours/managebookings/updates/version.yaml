@@ -9,3 +9,6 @@ v1.0.3:
 v1.0.4:
     - 'Created table realtours_managebookings_booking'
     - builder_table_create_realtours_managebookings_booking.php
+v1.0.5:
+    - 'Added location and status columns to tours table'
+    - builder_table_add_columns_to_realtours_managebookings_tours.php

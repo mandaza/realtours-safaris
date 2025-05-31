@@ -1,7 +1,7 @@
-<?php namespace RealTours\ManageBookings\Components;
+<?php namespace RealTours\Managebookings\Components;
 
 use Cms\Classes\ComponentBase;
-use RealTours\ManageBookings\Models\Tours;
+use RealTours\Managebookings\Models\Tours;
 use Log;
 
 class ToursList extends ComponentBase
@@ -96,6 +96,13 @@ class ToursList extends ComponentBase
     protected function loadTours()
     {
         $query = Tours::query();
+
+        // Filter for active tours
+        $query->where(function($query) {
+            $query->where('is_active', 1)
+                  ->orWhereNull('is_active'); // Include tours where is_active is not set
+        });
+
         $search = trim(input('search'));
         if ($search) {
             $query->where(function($q) use ($search) {
@@ -111,9 +118,28 @@ class ToursList extends ComponentBase
                   ;
             });
         }
+
         $sortOrder = $this->property('sortOrder', 'name asc');
         list($sortField, $sortDirection) = explode(' ', $sortOrder);
-        $query->orderBy($sortField, $sortDirection);
+
+        // Map the sort field to the correct database column
+        $sortFieldMap = [
+            'name' => 'tour_name',
+            'price' => 'price',
+            'created_at' => 'created_at'
+        ];
+
+        $dbField = $sortFieldMap[$sortField] ?? 'tour_name';
+        $query->orderBy($dbField, $sortDirection);
+
+        // Log the query for debugging
+        Log::info('ToursList query:', [
+            'sql' => $query->toSql(),
+            'bindings' => $query->getBindings(),
+            'sort_field' => $dbField,
+            'sort_direction' => $sortDirection
+        ]);
+
         return $query->paginate($this->property('toursPerPage'));
     }
 }

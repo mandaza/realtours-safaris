@@ -2,7 +2,7 @@ title = "Tour Details"
 url = "/tour/:slug"
 layout = "default"
 
-[TourDetails]
+[tourdetails]
 ==
 <div class="tour-details-page container">
     <!-- Header Row -->
@@ -29,9 +29,29 @@ layout = "default"
         </div>
         <!-- Right: Three Stacked Placeholders -->
         <div class="tour-main-right">
-            <div class="tour-main-right-placeholder"></div>
-            <div class="tour-main-right-placeholder"></div>
-            <div class="tour-main-right-placeholder"></div>
+            {% if tour.thumbnail1 %}
+                <div class="tour-main-right-placeholder">
+                    <img src="{{ tour.thumbnail1|media }}" alt="{{ tour.tour_name }} - Image 1" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                </div>
+            {% else %}
+                <div class="tour-main-right-placeholder"></div>
+            {% endif %}
+
+            {% if tour.thumbnail2 %}
+                <div class="tour-main-right-placeholder">
+                    <img src="{{ tour.thumbnail2|media }}" alt="{{ tour.tour_name }} - Image 2" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                </div>
+            {% else %}
+                <div class="tour-main-right-placeholder"></div>
+            {% endif %}
+
+            {% if tour.image %}
+                <div class="tour-main-right-placeholder">
+                    <img src="{{ tour.image|media }}" alt="{{ tour.tour_name }} - Main Image" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                </div>
+            {% else %}
+                <div class="tour-main-right-placeholder"></div>
+            {% endif %}
         </div>
     </div>
 

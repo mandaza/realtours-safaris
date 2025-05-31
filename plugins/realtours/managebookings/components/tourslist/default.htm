@@ -5,7 +5,12 @@
         </div>
     {% endif %}
 
-
+    <!-- {% if debug %}
+        <div class="alert alert-info" style="margin-bottom: 20px;">
+            <h4>Debug Information:</h4>
+            <pre>{{ debug|json_encode(JSON_PRETTY_PRINT) }}</pre>
+        </div>
+    {% endif %} -->
 
     {% if tours %}
         <div class="tours-grid">

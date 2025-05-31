@@ -5,7 +5,7 @@
         <title>{{ this.page.title }} - {{ this.theme.site_name }}</title>
         <meta name="description" content="{{ this.page.meta_description }}">
         <meta name="title" content="{{ this.page.meta_title }}">
-        <meta name="author" content="Real Tours Safaris Zimbabwe">
+        <meta name="author" content="Real Tours & Safaris Zimbabwe">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="{{ 'assets/images/favicon.png'|theme }}">
         <link href="https://fonts.googleapis.com/css?family=Barlow:400,700,900&display=swap" rel="stylesheet">
@@ -45,6 +45,13 @@
                 audio.play().catch(function(){});
             }
         });
+        </script>
+        <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
+        <script>
+          var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"WhatsApp Us","cornerRadius":40,"marginBottom":20,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"+263775901717","welcomeMessage":"Hello, Real Tours & Safaries","zIndex":999999,"btnColorScheme":"light"};
+          window.onload = () => {
+            _waEmbed(wa_btnSetting);
+          };
         </script>
         {% endif %}
     </body>

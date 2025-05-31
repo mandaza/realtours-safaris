@@ -10,12 +10,15 @@ layout = "default"
     </div>
     <div class="about-story-row">
         <div class="about-story-text">
-            <h2>Our Story</h2>
-            <p>Real Tours Safaris was founded in 2008 by a team of passionate Zimbabwean guides who wanted to share the natural beauty and wildlife of their homeland with the world. What began as a small operation with just two vehicles and three guides has grown into one of Zimbabwe's most respected safari companies.</p>
-            <p>Our founder, Emmanuel Moyo, believed that safari tours should not only showcase Africa's incredible wildlife but should also provide authentic cultural experiences and support local communities. This vision continues to guide everything we do.</p>
-            <p>Today, we remain a proudly Zimbabwean-owned company, employing local guides and staff who have unparalleled knowledge of our country's wildlife, history, and culture.</p>
+            <h2>Know us better</h2>
+            <p>At Real Tours Safaris, we specialize in curating unforgettable African experiences that connect travellers with the breathtaking beauty, vibrant cultures, and unparalleled adventures of Zimbabwe and beyond. Based in the heart of Victoria Falls, we pride ourselves on offering personalized tours that showcase the best of this natural wonder and its surrounding attractions.</p>
+            <p>From adrenaline-fueled activities to serene cultural immersions, our carefully crafted itineraries cater to adventurers, families, and explorers seeking meaningful connections with Africa's wilderness and heritage.</p>
+            <p>We are more than a touring company; we are storytellers, creating lifelong memories and moments of awe. With a dedicated team of passionate guides and a commitment to sustainable tourism, Real Tours Safaris ensures that every journey not only delights our guests but also benefits the communities and environments we touch.</p>
         </div>
-        <div class="about-story-img about-img-placeholder"></div>
+        <div class="about-story-img">
+            <img src="{{ 'assets/images/about-us/image-001.jpg'|theme }}" alt="Real Tours Safaris Team" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+            <img src="{{ 'assets/images/about-us/image-004.jpg'|theme }}" alt="Real Tours Safaris Team" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+        </div>
     </div>
     <div class="about-mission-box">
         <h2 class="about-mission-title">Our Mission & Values</h2>
@@ -35,7 +38,10 @@ layout = "default"
         </div>
     </div>
     <div class="about-conservation-row">
-        <div class="about-conservation-img about-img-placeholder"></div>
+        <div class="about-conservation-img">
+            <img src="{{ 'assets/images/about-us/image-002.jpg'|theme }}" alt="Real Tours Safaris Team" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+            <img src="{{ 'assets/images/about-us/image-003.jpg'|theme }}" alt="Real Tours Safaris Team" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+        </div>
         <div class="about-conservation-text">
             <h2>Our Conservation Efforts</h2>
             <p>At Real Tours Safaris, conservation is at the heart of everything we do. We recognize that the incredible wildlife and habitats we showcase are precious resources that need protection.</p>
@@ -47,9 +53,10 @@ layout = "default"
         <h2 class="about-team-title">Meet Our Expert Team</h2>
         <div class="about-team-desc">Our passionate guides and staff are the heart of Real Tours Safaris. With deep local knowledge and expertise, they'll make your Zimbabwe adventure truly unforgettable.</div>
         <div class="about-team-grid">
-            {% for i in 1..4 %}
             <div class="about-team-card">
-                <div class="about-team-img"></div>
+                <div class="about-team-img">
+                    <img src="{{ 'assets/images/team/Innocent-Goto.jpg'|theme }}" alt="Innocent Goto - Wildlife Guide" style="width:100%;height:100%;object-fit:cover;">
+                </div>
                 <div class="about-team-info">
                     <div class="about-team-location">&#9679; Victoria Falls</div>
                     <div class="about-team-name">Innocent Goto</div>
@@ -61,7 +68,51 @@ layout = "default"
                     </div>
                 </div>
             </div>
-            {% endfor %}
+            <div class="about-team-card">
+                <div class="about-team-img">
+                    <img src="{{ 'assets/images/team/Memory-Dhlakama.jpg'|theme }}" alt="Tendai Moyo - Cultural Guide" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <div class="about-team-info">
+                    <div class="about-team-location">&#9679; Victoria Falls</div>
+                    <div class="about-team-name">Memory Dhlakama</div>
+                    <div class="about-team-bio">A cultural expert with extensive knowledge of Zimbabwe's rich heritage, Memory specializes in creating authentic cultural experiences and community interactions.</div>
+                    <div class="about-team-expertise-row">
+                        <span class="about-team-expertise">Cultural Tours</span>
+                        <span class="about-team-expertise">Local History</span>
+                        <span class="about-team-expertise">Community Relations</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-team-card">
+                <div class="about-team-img">
+                    <img src="{{ 'assets/images/team/Bothwell-Guveya.jpg'|theme }}" alt="Sarah Ndlovu - Safari Specialist" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <div class="about-team-info">
+                    <div class="about-team-location">&#9679; Victoria Falls</div>
+                    <div class="about-team-name">Bothwell Guveya</div>
+                    <div class="about-team-bio">Our safari specialist with a passion for wildlife photography and conservation, Bothwell ensures every safari experience is both educational and unforgettable.</div>
+                    <div class="about-team-expertise-row">
+                        <span class="about-team-expertise">Safari Planning</span>
+                        <span class="about-team-expertise">Wildlife Photography</span>
+                        <span class="about-team-expertise">Guest Relations</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-team-card">
+                <div class="about-team-img">
+                    <img src="{{ 'assets/images/team/Darren-Goto.jpg'|theme }}" alt="John Sibanda - Adventure Guide" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <div class="about-team-info">
+                    <div class="about-team-location">&#9679; Victoria Falls</div>
+                    <div class="about-team-name">Darren Goto</div>
+                    <div class="about-team-bio">An experienced adventure guide specializing in Victoria Falls activities, Darren brings excitement and safety to every adrenaline-pumping experience.</div>
+                    <div class="about-team-expertise-row">
+                        <span class="about-team-expertise">Adventure Tours</span>
+                        <span class="about-team-expertise">Safety Training</span>
+                        <span class="about-team-expertise">Equipment Specialist</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="about-faq-box">

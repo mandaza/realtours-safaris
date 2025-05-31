@@ -1480,7 +1480,7 @@ body {
 .about-story-img {
     flex: 1 1 340px;
     min-width: 260px;
-    height: 220px;
+    height: 180px;
     border-radius: 12px;
     background: #ececec;
 }
@@ -1494,7 +1494,7 @@ body {
 }
 .about-mission-title {
     font-family: 'Abel', Arial, sans-serif;
-    font-size: 1.25rem;
+    font-size: 2rem;
     font-weight: normal;
     text-align: center;
     margin-bottom: 18px;

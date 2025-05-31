@@ -2,8 +2,8 @@ title = "Booking Request"
 url = "/booking/:slug"
 layout = "default"
 
-[TourDetails]
-[BookingForm]
+[tourdetails]
+[bookingform]
 ==
 <div class="booking-request-page container">
     <div class="booking-header">
@@ -13,12 +13,18 @@ layout = "default"
     <div class="booking-request-flex">
         <!-- Left: Booking Form -->
         <div class="booking-form-card">
-            {% component 'BookingForm' %}
+            {% component 'bookingform' %}
         </div>
         <!-- Right: Tour Summary -->
         <div class="booking-summary-card">
             <div class="summary-title">Tour Summary</div>
-            <div class="summary-img"></div>
+            <div class="summary-img">
+                {% if tour.image %}
+                    <img src="{{ tour.image|media }}" alt="{{ tour.tour_name }}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                {% else %}
+                    <div class="summary-img-placeholder"></div>
+                {% endif %}
+            </div>
             <div class="summary-tour-title">{{ tour.tour_name }}</div>
             <div class="summary-tour-desc">Discover the amazing The Smoke that Thunder!</div>
             <div class="summary-details">
