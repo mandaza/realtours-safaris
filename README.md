@@ -1,74 +1,92 @@
+# RealTours - October CMS Project
+
 <p align="center">
     <img src="https://github.com/octobercms/october/blob/develop/themes/demo/assets/images/favicon.png?raw=true" alt="October" width="25%" height="25%" />
 </p>
 
-[October](https://octobercms.com) is a Content Management System (CMS) and web platform whose sole purpose is to make your development workflow simple again. It was born out of frustration with existing systems. We feel building websites has become a convoluted and confusing process that leaves developers unsatisfied. We want to turn you around to the simpler side and get back to basics.
+## About RealTours
 
-October's mission is to show the world that web development is not rocket science.
+RealTours is a real estate tour management system built on [October CMS](https://octobercms.com), a Content Management System (CMS) and web platform whose sole purpose is to make your development workflow simple again.
 
-[![Build Status](https://github.com/octobercms/library/actions/workflows/tests.yml/badge.svg)](https://octobercms.com/)
-[![Downloads](https://img.shields.io/packagist/dt/october/rain)](https://docs.octobercms.com/)
-[![Version](https://img.shields.io/packagist/v/october/october)](https://octobercms.com/changelog)
-[![License](https://poser.pugx.org/october/october/license.svg)](./LICENSE.md)
+This project provides a comprehensive solution for managing real estate tours, bookings, and property management through an intuitive web interface.
 
-> *Please note*: October is open source but it is not free software. A license with a small fee is required for each website you build with October CMS.
+## Project Features
 
-## Installing October
+- **Real Estate Tour Management**: Organize and schedule property tours
+- **Booking System**: Handle tour reservations and confirmations
+- **Property Management**: Manage property listings and details
+- **User Management**: Handle user accounts and permissions
+- **Modern UI/UX**: Clean, responsive design for optimal user experience
 
-Instructions on how to install October can be found at the [installation guide](https://docs.octobercms.com/3.x/setup/installation.html).
+## Technology Stack
 
-### Quick Start Installation
+- **Backend**: October CMS (Laravel-based)
+- **Frontend**: Modern HTML/CSS/JavaScript
+- **Database**: MySQL/PostgreSQL
+- **Additional**: Twilio integration for communications
 
-If you have composer installed, run this in your terminal to install October CMS from command line. This will place the files in a directory named **myoctober**.
+## Installation & Setup
 
-    composer create-project october/october myoctober
+### Prerequisites
+- PHP 8.0 or higher
+- Composer
+- MySQL/PostgreSQL database
+- Web server (Apache/Nginx)
 
-If you plan on using a database, run this command inside the application directory.
+### Quick Start
 
-    php artisan october:install
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd realtours
+   ```
 
-## Learning October
+2. **Install dependencies**
+   ```bash
+   composer install
+   npm install
+   ```
 
-The best place to learn October CMS is by [reading the documentation](https://docs.octobercms.com) or [following some tutorials](https://octobercms.com/support/articles/tutorials).
+3. **Configure environment**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your database and API credentials
+   ```
 
-You may also watch this [introductory video](https://www.youtube.com/watch?v=yLZTOeOS7wI). Make sure to check out our [official YouTube channel](https://www.youtube.com/c/OctoberCMSOfficial). There is also the excellent video series by [Watch & Learn](https://watch-learn.com/series/making-websites-with-october-cms).
+4. **Install October CMS**
+   ```bash
+   php artisan october:install
+   ```
 
-For code examples of building with October CMS, visit the [RainLab Plugin Suite](https://github.com/rainlab) or the [October Demos Repo](https://github.com/octoberdemos).
+5. **Build assets**
+   ```bash
+   npm run dev
+   ```
 
-## Coding Standards
+## Development Workflow
 
-Please follow the following guides and code standards:
+This project uses a clean branch strategy for development:
+
+- **main**: Production-ready code
+- **clean-branch**: Development branch for new features
+- **feature branches**: Individual feature development
+
+## Contributing
+
+Please follow the coding standards:
 
 * [PSR 4 Coding Standards](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md)
 * [PSR 2 Coding Style Guide](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
 * [PSR 1 Coding Standards](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md)
 
-## Security Vulnerabilities
+## Security
 
 Please review [our security policy](https://github.com/octobercms/october/security/policy) on how to report security vulnerabilities.
-
-## Development Team
-
-October CMS was created by [Alexey Bobkov](https://www.linkedin.com/in/alexey-bobkov-232ba02b/) and [Samuel Georges](https://www.linkedin.com/in/samuel-georges-0a964131/), who both continue to develop the platform.
-
-## Foundation library
-
-The CMS uses [Laravel](https://laravel.com) as a foundation PHP framework.
-
-## Contact
-
-For announcements and updates:
-
-* [Contact Us Page](http://octoberdev.test/contact)
-* [Follow us on Twitter](https://twitter.com/octobercms)
-* [Like us on Facebook](https://facebook.com/octobercms)
-
-To chat or hang out:
-
-* [Join us on Slack](https://join.slack.com/t/octobercms/shared_invite/zt-2f19m689c-VCrBPc2P1dmqAJ_86Y8e_Q)
-* [Join us on Discord](https://discord.gg/gEKgwSZ)
-* [Join us on Telegram](https://t.me/octoberchat)
 
 ## License
 
 The October CMS platform is licensed software, see [End User License Agreement](./LICENSE.md) (EULA) for more details.
+
+---
+
+*Built with ❤️ using October CMS*
